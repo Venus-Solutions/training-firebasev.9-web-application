@@ -85,14 +85,14 @@
 
       let tempPoint, humiPoint;
 
-      const firebaseTempRef = ref(db, "temp");
+      const firebaseTempRef = ref(db, "xxxxx key ของอุณหภูมิ xxxxx");
       onValue(firebaseTempRef, (snapshot) => {
         let temp = snapshot.val();
         tempPoint = temp.toPrecision(4);
         document.getElementById("temp").innerHTML = tempPoint;
       });
 
-      const firebaseHumiRef = ref(db, "humi");
+      const firebaseHumiRef = ref(db, "xxxxx key ของความชื้น xxxxx");
       onValue(firebaseHumiRef, (snapshot) => {
         let humi = snapshot.val();
         humiPoint = humi.toPrecision(4);
