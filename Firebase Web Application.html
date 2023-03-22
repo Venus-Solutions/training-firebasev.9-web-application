@@ -28,6 +28,30 @@
         padding: 10px 20px;
         border-radius: 10px;
       }
+      button {
+        font-size: clamp(16px, 2.5vw, 25px);
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+      .onBtn {
+        background-color: green;
+        color: white;
+      }
+      .offBtn {
+        background-color: crimson;
+        color: white;
+      }
+      .onBtn:hover {
+        background-color: white;
+        color: green;
+        cursor: pointer;
+      }
+      .offBtn:hover {
+        background-color: white;
+        color: crimson;
+        cursor: pointer;
+      }
       body {
         background-color: rgb(68, 68, 68);
       }
@@ -48,6 +72,10 @@
       ><br /><br />
       <label class="humidity">ความชื้น = <span id="humi"></span> %</label
       ><br /><br />
+      <button class="onBtn" id="onBtnR1">เปิด Relay #1</button>
+      <button class="offBtn" id="offBtnR1">ปิด Relay #1</button><br>
+      <button class="onBtn" id="onBtnR2">เปิด Relay #2</button>
+      <button class="offBtn" id="offBtnR2">ปิด Relay #2</button>
     </div>
 
     <div class="chart-container">
@@ -98,6 +126,27 @@
         humiPoint = humi.toPrecision(4);
         document.getElementById("humi").innerHTML = humiPoint;
         updateChart();
+      });
+      
+      let Relay1 = firebase.database().ref("control/relay1");
+      let Relay2 = firebase.database().ref("control/relay2");
+
+      let onBtnR1 = document.getElementById("onBtnR1");
+      let offBtnR1 = document.getElementById("offBtnR1");
+      let onBtnR2 = document.getElementById("onBtnR2");
+      let offBtnR2 = document.getElementById("offBtnR2");
+
+      onBtnR1.addEventListener("click", function onRelay1() {
+        Relay1.set(true);
+      });
+      offBtnR1.addEventListener("click", function offRelay1() {
+        Relay1.set(false);
+      });
+      onBtnR2.addEventListener("click", function onRelay2() {
+        Relay2.set(true);
+      });
+      offBtnR2.addEventListener("click", function offRelay2() {
+        Relay2.set(false);
       });
 
       let chartClick = document.getElementById("myChart");
