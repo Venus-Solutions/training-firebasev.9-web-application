@@ -128,8 +128,8 @@
         updateChart();
       });
       
-      let Relay1 = firebase.database().ref("control/relay1");
-      let Relay2 = firebase.database().ref("control/relay2");
+      const Relay1 = ref(db, "xxxxx key ของ Relay1 xxxxx");
+      const Relay2 = ref(db, "xxxxx key ของ Relay2 xxxxx");
 
       let onBtnR1 = document.getElementById("onBtnR1");
       let offBtnR1 = document.getElementById("offBtnR1");
@@ -137,16 +137,16 @@
       let offBtnR2 = document.getElementById("offBtnR2");
 
       onBtnR1.addEventListener("click", function onRelay1() {
-        Relay1.set(true);
+        set(Relay1, true);
       });
       offBtnR1.addEventListener("click", function offRelay1() {
-        Relay1.set(false);
+        set(Relay1, false);
       });
       onBtnR2.addEventListener("click", function onRelay2() {
-        Relay2.set(true);
+        set(Relay2, true);
       });
       offBtnR2.addEventListener("click", function offRelay2() {
-        Relay2.set(false);
+        set(Relay2, false);
       });
 
       let chartClick = document.getElementById("myChart");
